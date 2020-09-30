@@ -49,6 +49,12 @@ void Serial::send(QString msg)
         port->write(msg.toLatin1());
     }
 }
+
+QString Serial::getmsg()
+{
+
+    return rmsg.takeFirst();
+}
 //当接收到结束符发送一个信号\r\n为结束符
 //定义校验符
 //数据格式

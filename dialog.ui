@@ -73,6 +73,18 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="AnalysisBtn">
+       <property name="font">
+        <font>
+         <family>Consolas</family>
+        </font>
+       </property>
+       <property name="text">
+        <string>Analysis</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="SendBtn">
        <property name="font">
         <font>

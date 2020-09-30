@@ -13,6 +13,8 @@ Dialog::Dialog(QWidget *parent) :
     }
     //实现读取串口数据
     connect(&manager,&Serial::arrivemsg,this,&Dialog::refreshUI);
+    connect(this,&Dialog::sendMsgToAnalysis,&analysisWindow,&MsgDialog::analysismsg);
+    connect(this,&Dialog::startAnalysisWindow,&analysisWindow,&MsgDialog::startshow);
 }
 
 Dialog::~Dialog()
@@ -23,8 +25,10 @@ Dialog::~Dialog()
 void Dialog::refreshUI()
 {
     ui->Content->clear();
-    QString msg=manager.rmsg.takeFirst();
+    QString msg=manager.getmsg();
+
     ui->Content->append(msg);
+    emit sendMsgToAnalysis(msg);
 }
 
 void Dialog::on_connctButton_clicked()
@@ -48,4 +52,9 @@ void Dialog::on_SendBtn_clicked()
 {
     QString temp=ui->SendContent->toPlainText();
     manager.send(temp+'\n');
+}
+
+void Dialog::on_AnalysisBtn_clicked()
+{
+    emit startAnalysisWindow();
 }

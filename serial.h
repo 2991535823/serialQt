@@ -31,6 +31,7 @@ public:
     //关闭串口
     void close();
     void send(QString msg);
+    QString getmsg();
     //实现单例模式
     static Serial & get_instance(){
         static Serial instance;
